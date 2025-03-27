@@ -60,14 +60,15 @@ function browseThreads(attachfunc, closefunc) {
         msgid = $("#attachThreadMessageId").val();
         if (!msgid || msgid === "") {
             msgid = $("#attachThreadList").val();
-            if (!msgid) return;
-            subject = $("#attachThreadList option:selected").data("subject");
-            subject = subject.replace(/\bre: /gi, "");
-            subject = subject.replace(/\bfwd: /gi, "");
-            // Strips [PATCH], [POC], etc. prefixes
-            subject = subject.replace(/\[\w+\]: /gi, "");
-            subject = subject.replace(/\[\w+\] /gi, "");
         }
+        if (!msgid) return;
+
+        subject = $("#attachThreadList option:selected").data("subject");
+        subject = subject.replace(/\bre: /gi, "");
+        subject = subject.replace(/\bfwd: /gi, "");
+        // Strips [PATCH], [POC], etc. prefixes
+        subject = subject.replace(/\[\w+\]: /gi, "");
+        subject = subject.replace(/\[\w+\] /gi, "");
 
         $("#attachThreadListWrap").addClass("loading");
         $("#attachThreadSearchButton").addClass("disabled");
